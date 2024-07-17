@@ -10,6 +10,7 @@ public class Conversiones {
 		
 		double value3 = 10*20.5d;
 		System.out.println(value3);
+		System.out.println(value1);
 
 	}
 
