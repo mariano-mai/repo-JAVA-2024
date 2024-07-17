@@ -1,0 +1,7 @@
+#cosas
+.project
+.classpath
+.settings
+
+#Compilación
+*.class
