@@ -1,4 +1,4 @@
-package javajedi2024.iniciado;
+package javajedi2024.n1.iniciado;
 
 public class NombreBebida {
 
