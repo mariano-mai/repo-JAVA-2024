@@ -30,12 +30,16 @@ public class Flota {
 		int i = 1;
 		for(Vehiculo vehiculo:this.vehiculos) {
 			System.out.println(i+"° vehículo:");
-			System.out.println("Marca: "+vehiculo.getMarca());
-			System.out.println("Modelo: "+vehiculo.getModelo());
+			informacion(vehiculo);
 			vehiculo.mover();
 			System.out.println("");
 			i++;
 		}
+	}
+	
+	private void informacion(Vehiculo vehiculo) {
+		System.out.println("Marca: "+vehiculo.getMarca());
+		System.out.println("Modelo: "+vehiculo.getModelo());
 	}
 
 }
