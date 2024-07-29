@@ -4,8 +4,8 @@ public class Coche extends Vehiculo {
 	
 	private boolean cajaAutomatica;
 
-	public Coche(String marca, String modelo, boolean cajaAutomatica) {
-		super(marca, modelo);
+	public Coche(String marca, String modelo, Flota flota, boolean cajaAutomatica) {
+		super(marca, modelo, flota);
 		this.cajaAutomatica = cajaAutomatica;
 	}
 	

@@ -38,8 +38,8 @@ public class Flota {
 	}
 	
 	private void informacion(Vehiculo vehiculo) {
-		System.out.println("Marca: "+vehiculo.getMarca());
-		System.out.println("Modelo: "+vehiculo.getModelo());
+		System.out.println("Marca: "+vehiculo.marca);
+		System.out.println("Modelo: "+vehiculo.modelo);
 	}
 
 }

@@ -2,13 +2,15 @@ package clase005.poo.escenario2.dominio;
 
 public abstract class Vehiculo {
 	
-	private String marca;
-	private String modelo;
+	protected String marca;
+	protected String modelo;
+	private Flota flota;
 	
-	public Vehiculo(String marca, String modelo) {
+	public Vehiculo(String marca, String modelo, Flota flota) {
 		super();
 		this.marca = marca;
 		this.modelo = modelo;
+		this.flota = flota;
 		
 	}
 	
@@ -34,6 +36,18 @@ public abstract class Vehiculo {
 
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
+	}
+	
+	
+
+	public Flota getFlota() {
+		return flota;
+	}
+
+
+
+	public void setFlota(Flota flota) {
+		this.flota = flota;
 	}
 
 

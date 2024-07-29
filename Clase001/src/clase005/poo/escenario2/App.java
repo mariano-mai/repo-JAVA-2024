@@ -12,12 +12,14 @@ public class App {
 
 	public static void main(String[] args) {
 		
+		Flota flota1 = new Flota();
+		
 		List<Vehiculo> vehiculos = new ArrayList<>();
-		Coche auto1 = new Coche("Audi", "A3", false);
-		Coche auto2 = new Coche("Ford", "Fiesta", true);
-		Coche auto3 = new Coche("Chevrolet", "Camaro", true);
-		Moto moto1 = new Moto("Honda", "Bis", "negro");
-		Moto moto2 = new Moto("Zanella", "Ceccato", "verde");
+		Coche auto1 = new Coche("Audi", "A3", flota1, false);
+		Coche auto2 = new Coche("Ford", "Fiesta", flota1, true);
+		Coche auto3 = new Coche("Chevrolet", "Camaro",flota1, true);
+		Moto moto1 = new Moto("Honda", "Bis",flota1, "negro");
+		Moto moto2 = new Moto("Zanella", "Ceccato",flota1, "verde");
 		
 		vehiculos.add(auto1);
 		vehiculos.add(moto2);
@@ -25,7 +27,7 @@ public class App {
 		vehiculos.add(moto1);
 		vehiculos.add(auto2);
 		
-		Flota flota1 = new Flota();
+		
 		flota1.setVehiculos(vehiculos);
 		
 		flota1.moverVehiculos();

@@ -4,8 +4,8 @@ public class Moto extends Vehiculo {
 	
 	private String color;
 
-	public Moto(String marca, String modelo, String color) {
-		super(marca, modelo);
+	public Moto(String marca, String modelo, Flota flota, String color) {
+		super(marca, modelo, flota);
 		this.color = color;
 	}
 	
