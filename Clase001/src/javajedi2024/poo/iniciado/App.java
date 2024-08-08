@@ -79,7 +79,7 @@ public class App {
 		for(Curso curso : cursos) {
 			for(int i=0; i<=3; i++) {
 				int min = 0;
-				int max = 9;
+				int max = 10;
 				int random = min + (int)(Math.random() * ((max - min) + 1));
 				curso.getAlumnos().add(listaDeAlumnos2.get(random));
 			}
