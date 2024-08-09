@@ -1,28 +1,34 @@
 package escenario02.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 
+import escenario02.enumerators.Modalidad;
 import escenario02.enumerators.NivelDeDificultad;
 
 public class Curso {
 	
+	private UUID idCurso;
 	private String nombre;
 	private int cantidadDeHoras;
 	private NivelDeDificultad nivelDeDificultad;
 	private List<Examen> examenes;
 	private Map<UUID, Estudiante> estudiantes = new TreeMap<>();
+	private Modalidad modalidadTeorica;
+	private List<Recurso> recursos = new ArrayList<>();
 	
 	public Curso() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Curso(String nombre, int cantidadDeHoras, NivelDeDificultad nivelDeDificultad, List<Examen> examenes,
-			Map<UUID, Estudiante> estudiantes) {
+	public Curso(UUID idCurso, String nombre, int cantidadDeHoras, NivelDeDificultad nivelDeDificultad, List<Examen> examenes,
+			Map<UUID, Estudiante> estudiantes, Modalidad modalidadTeorica, List<Recurso> recursos) {
 		super();
+		this.idCurso = idCurso;
 		this.nombre = nombre;
 		this.cantidadDeHoras = cantidadDeHoras;
 		this.nivelDeDificultad = nivelDeDificultad;
@@ -68,6 +74,30 @@ public class Curso {
 
 	public void setEstudiantes(Map<UUID, Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
+	}
+
+	public UUID getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(UUID idCurso) {
+		this.idCurso = idCurso;
+	}
+
+	public Modalidad getModalidadTeorica() {
+		return modalidadTeorica;
+	}
+
+	public void setModalidadTeorica(Modalidad modalidadTeorica) {
+		this.modalidadTeorica = modalidadTeorica;
+	}
+
+	public List<Recurso> getRecursos() {
+		return recursos;
+	}
+
+	public void setRecursos(List<Recurso> recursos) {
+		this.recursos = recursos;
 	}
 	
 
