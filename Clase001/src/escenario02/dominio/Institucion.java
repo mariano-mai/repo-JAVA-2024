@@ -1,5 +1,6 @@
 package escenario02.dominio;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -50,6 +51,28 @@ public class Institucion {
 		System.out.println("\nCurso creado con éxito.\n");
 		System.out.println("NOMBRE: "+nuevoCurso.getNombre()+"\nID: "+nuevoCurso.getIdCurso()+"\nNIVEL DE DIFICULTAD: "+nuevoCurso.getNivelDeDificultad()+"\n");
 		return nuevoCurso;
+	}
+	
+	public Estudiante crearEstudiante() {
+		Estudiante nuevoEstudiante = new Estudiante();
+		nuevoEstudiante.setIdEstudiante(UUID.randomUUID());
+		System.out.println("Ingrese nombre del estudiante: ");
+		nuevoEstudiante.setNombre(IngresoPorScanner.entradaDeTexto());
+		System.out.println("Fecha de Nacimiento: \ndía: ");
+		int dia = IngresoPorScanner.entradaDeNumero();
+		System.out.println("mes: ");
+		int mes = IngresoPorScanner.entradaDeNumero();
+		System.out.println("año: ");
+		int anio = IngresoPorScanner.entradaDeNumero();
+		LocalDate fecha = LocalDate.of(anio, mes, dia);
+		nuevoEstudiante.setFechaDeNacimiento(fecha);
+		System.out.println("Ingrese DNI del estudiante: ");
+		nuevoEstudiante.setDni(IngresoPorScanner.entradaDeNumero());
+		System.out.println("\nEstudiante ingresado con éxito.\n");
+		System.out.println("NOMBRE: "+nuevoEstudiante.getNombre()+"\nID: "+nuevoEstudiante.getIdEstudiante()+"\nFECHA DE NACIMIENTO: "+
+		nuevoEstudiante.getFechaDeNacimiento().getDayOfMonth()+"/"+nuevoEstudiante.getFechaDeNacimiento().getMonth()+"/"+
+				nuevoEstudiante.getFechaDeNacimiento().getYear()+"\n");
+		return nuevoEstudiante;
 	}
 
 }

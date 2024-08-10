@@ -23,6 +23,8 @@ public class App {
 			switch(opcion) {
 				case 1:
 					institucion.crearCurso();
+				case 2:
+					institucion.crearEstudiante();
 			}
 		}while(opcion != 6);
 

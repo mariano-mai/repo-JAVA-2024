@@ -11,7 +11,7 @@ public class Estudiante {
 	private UUID idEstudiante;
 	private String nombre;
 	private LocalDate fechaDeNacimiento;
-	private Long dni;
+	private int dni;
 	private List<Curso> cursos;
 	private Map<UUID, Examen> examenes = new TreeMap<>();
 	
@@ -20,7 +20,7 @@ public class Estudiante {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Estudiante(UUID idEstudiante, String nombre, LocalDate fechaDeNacimiento, Long dni, List<Curso> cursos,
+	public Estudiante(UUID idEstudiante, String nombre, LocalDate fechaDeNacimiento, int dni, List<Curso> cursos,
 			Map<UUID, Examen> examenes) {
 		super();
 		this.idEstudiante = idEstudiante;
@@ -55,11 +55,11 @@ public class Estudiante {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 
-	public Long getDni() {
+	public int getDni() {
 		return dni;
 	}
 
-	public void setDni(Long dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 
