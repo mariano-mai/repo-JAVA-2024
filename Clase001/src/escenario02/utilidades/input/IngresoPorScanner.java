@@ -18,6 +18,12 @@ public class IngresoPorScanner {
 		return numero;
 	}
 	
+	public static Long entradaDeNumeroLong() {
+		entrada = new Scanner(System.in);
+		Long numero = entrada.nextLong();
+		return numero;
+	}
+	
 	public boolean esONoEs(int valor) {
 		boolean estaHabilitado;
 		if(valor == 1) {

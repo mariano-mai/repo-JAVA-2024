@@ -1,5 +1,7 @@
 package escenario02;
 
+import java.util.UUID;
+
 import escenario02.dominio.Institucion;
 import escenario02.utilidades.input.IngresoPorScanner;
 
@@ -23,8 +25,26 @@ public class App {
 			switch(opcion) {
 				case 1:
 					institucion.crearCurso();
+					break;
 				case 2:
-					institucion.crearEstudiante();
+					System.out.println("Ingrese id del curso:");
+					String idCurso = IngresoPorScanner.entradaDeTexto();
+					institucion.inscribirEstudiante(UUID.fromString(idCurso));
+					break;
+				case 3:
+					System.out.println("Ingrese Id del Curso:");
+					idCurso = IngresoPorScanner.entradaDeTexto();
+					System.out.println("Ingrese DNI del estudiante:");
+					Long dniEstudiante = IngresoPorScanner.entradaDeNumeroLong();
+					institucion.inscribirEstudianteACurso(UUID.fromString(idCurso), dniEstudiante);
+					break;
+				case 4:
+					institucion.mostrarCursos();
+					break;
+				case 5:
+					institucion.listarEstudiantesYCursos();
+					break;
+				default:
 			}
 		}while(opcion != 6);
 

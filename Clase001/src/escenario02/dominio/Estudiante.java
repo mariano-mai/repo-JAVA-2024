@@ -1,6 +1,7 @@
 package escenario02.dominio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -11,8 +12,8 @@ public class Estudiante {
 	private UUID idEstudiante;
 	private String nombre;
 	private LocalDate fechaDeNacimiento;
-	private int dni;
-	private List<Curso> cursos;
+	private Long dni;
+	private List<Curso> cursos = new ArrayList<>();
 	private Map<UUID, Examen> examenes = new TreeMap<>();
 	
 	public Estudiante() {
@@ -20,7 +21,7 @@ public class Estudiante {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Estudiante(UUID idEstudiante, String nombre, LocalDate fechaDeNacimiento, int dni, List<Curso> cursos,
+	public Estudiante(UUID idEstudiante, String nombre, LocalDate fechaDeNacimiento, Long dni, List<Curso> cursos,
 			Map<UUID, Examen> examenes) {
 		super();
 		this.idEstudiante = idEstudiante;
@@ -55,11 +56,11 @@ public class Estudiante {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 
-	public int getDni() {
+	public Long getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(Long dni) {
 		this.dni = dni;
 	}
 

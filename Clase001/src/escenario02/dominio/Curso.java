@@ -16,7 +16,7 @@ public class Curso {
 	private int cantidadDeHoras;
 	private NivelDeDificultad nivelDeDificultad;
 	private List<Examen> examenes;
-	private Map<UUID, Estudiante> estudiantes = new TreeMap<>();
+	private Map<Long, Estudiante> estudiantes = new TreeMap<>();
 	private Modalidad modalidadTeorica;
 	private List<Recurso> recursos = new ArrayList<>();
 	
@@ -26,7 +26,7 @@ public class Curso {
 	}
 
 	public Curso(UUID idCurso, String nombre, int cantidadDeHoras, NivelDeDificultad nivelDeDificultad, List<Examen> examenes,
-			Map<UUID, Estudiante> estudiantes, Modalidad modalidadTeorica, List<Recurso> recursos) {
+			Map<Long, Estudiante> estudiantes, Modalidad modalidadTeorica, List<Recurso> recursos) {
 		super();
 		this.idCurso = idCurso;
 		this.nombre = nombre;
@@ -68,11 +68,11 @@ public class Curso {
 		this.examenes = examenes;
 	}
 
-	public Map<UUID, Estudiante> getEstudiantes() {
+	public Map<Long, Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
 
-	public void setEstudiantes(Map<UUID, Estudiante> estudiantes) {
+	public void setEstudiantes(Map<Long, Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
 
@@ -100,5 +100,13 @@ public class Curso {
 		this.recursos = recursos;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		return stringBuilder.append("ID: ").append(this.getIdCurso()).append("\n")
+					 .append("NOMBRE: ").append(nombre).append("\n")
+					 .append("----------\n")
+					 .toString();
+	}
 
 }

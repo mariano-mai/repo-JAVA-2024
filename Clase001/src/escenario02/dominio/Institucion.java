@@ -2,7 +2,10 @@ package escenario02.dominio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.UUID;
 
 import escenario02.enumerators.NivelDeDificultad;
@@ -53,7 +56,7 @@ public class Institucion {
 		return nuevoCurso;
 	}
 	
-	public Estudiante crearEstudiante() {
+	private Estudiante crearEstudiante() {
 		Estudiante nuevoEstudiante = new Estudiante();
 		nuevoEstudiante.setIdEstudiante(UUID.randomUUID());
 		System.out.println("Ingrese nombre del estudiante: ");
@@ -67,12 +70,79 @@ public class Institucion {
 		LocalDate fecha = LocalDate.of(anio, mes, dia);
 		nuevoEstudiante.setFechaDeNacimiento(fecha);
 		System.out.println("Ingrese DNI del estudiante: ");
-		nuevoEstudiante.setDni(IngresoPorScanner.entradaDeNumero());
+		nuevoEstudiante.setDni(IngresoPorScanner.entradaDeNumeroLong());
 		System.out.println("\nEstudiante ingresado con éxito.\n");
 		System.out.println("NOMBRE: "+nuevoEstudiante.getNombre()+"\nID: "+nuevoEstudiante.getIdEstudiante()+"\nFECHA DE NACIMIENTO: "+
 		nuevoEstudiante.getFechaDeNacimiento().getDayOfMonth()+"/"+nuevoEstudiante.getFechaDeNacimiento().getMonth()+"/"+
 				nuevoEstudiante.getFechaDeNacimiento().getYear()+"\n");
 		return nuevoEstudiante;
+	}
+	
+	public void inscribirEstudiante(UUID idCurso) {
+		Estudiante estudiante = crearEstudiante();
+		boolean existeCurso = Boolean.FALSE;
+		for(Curso curso : this.cursos) {
+			if(curso.getIdCurso().equals(idCurso)) {
+				estudiante.getCursos().add(curso);
+				curso.getEstudiantes().put(estudiante.getDni(), estudiante);
+				existeCurso = Boolean.TRUE;
+				break;
+			}
+		}
+		if(existeCurso) {
+			System.out.println("Estudiante registrado.");
+		}
+	}
+	
+	public void mostrarCursos() {
+		System.out.println("Lista de cursos disponibles");
+		for(Curso curso : this.cursos) {
+			System.out.println(curso.toString());
+		}
+	}
+	
+	public void inscribirEstudianteACurso(UUID idCurso, Long dni) {
+		Estudiante estudiante = null;
+		boolean existeElEstudiante = Boolean.FALSE;
+		boolean esCursoEncontrado = Boolean.FALSE;
+		for(Curso curso : cursos) {
+			if(curso.getEstudiantes().containsKey(dni)) {
+				estudiante = curso.getEstudiantes().get(dni);
+				existeElEstudiante = Boolean.TRUE;
+				break;
+			}
+		}
+		if(!existeElEstudiante) {
+			throw new NoSuchElementException("No existe el estudiante.");
+		}
+		for(Curso curso : cursos) {
+			if(curso.getIdCurso().equals(idCurso)) {
+				estudiante.getCursos().add(curso);
+				curso.getEstudiantes().put(estudiante.getDni(), estudiante);
+				esCursoEncontrado = Boolean.TRUE;
+				break;
+			}
+		}
+		if(!esCursoEncontrado) {
+			throw new NoSuchElementException("No existe el curso.");
+		}else {
+			System.out.println("Estudiante asignado al curso.");
+		}
+	}
+	
+	public void listarEstudiantesYCursos() {
+		Set<Estudiante> listasEstudiantesSinRepetir = new HashSet<>();
+		for(Curso curso : cursos) {
+			listasEstudiantesSinRepetir.addAll(curso.getEstudiantes().values());
+		}
+		ArrayList<Estudiante> listaEstudiante = new ArrayList<>(listasEstudiantesSinRepetir);
+		System.out.println("Estudiantes:");
+		for(Estudiante estudiante : listaEstudiante) {
+			System.out.println(estudiante.toString());
+			for(Curso curso : estudiante.getCursos()) {
+				System.out.println(curso.toString());
+			}
+		}
 	}
 
 }
